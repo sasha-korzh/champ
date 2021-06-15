@@ -1,0 +1,65 @@
+{
+  "data": {
+    "getPostsByTopics": {
+      "count": 2,
+      "lastEvaluatedKey": "{\"id\":\"ps123\"}",
+      "items": [
+        {
+          "id": "Hello Post",
+          "createdAt": "2021-04-07T06:24:14.914Z",
+          "topic": null,
+          "postElements": {
+            "items": []
+          },
+          "author": {
+            "id": "u1",
+            "fullname": "sashko",
+            "avatarImageUrl": "url",
+            "rating": 1.5
+          },
+          "comments": {
+            "items": []
+          }
+        },
+        {
+          "id": "ps123",
+          "createdAt": "2021-04-08T08:40:16.713Z",
+          "topic": {
+            "id": "t1",
+            "name": "Sport",
+            "avatarImageUrl": "url"
+          },
+          "postElements": {
+            "items": [
+              {
+                "data": "urlurl",
+                "type": "link"
+              }
+            ]
+          },
+          "author": {
+            "id": "u1",
+            "fullname": "sashko",
+            "avatarImageUrl": "url",
+            "rating": 1.5
+          },
+          "comments": {
+            "items": [
+              {
+                "id": "c0204d7d-22d3-48af-a740-06e6f80816f0",
+                "text": "My First Comment!!!!!",
+                "createdAt": "2021-04-08T08:49:55.546Z",
+                "owner": {
+                  "id": "u1",
+                  "fullname": "sashko",
+                  "avatarImageUrl": "url",
+                  "rating": 1.5
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,81 @@
+name: champ
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  #
+  equatable: ^1.2.6
+  json_serializable: ^3.5.1
+  json_annotation: ^3.1.1
+  dartz: ^0.9.2
+  #auth
+  google_sign_in: ^4.5.9
+  firebase_auth: ^0.20.0
+  #cloud
+  amplify_flutter: ^0.1.0
+  amplify_api: '<1.0.0'
+  firebase_storage: "^7.0.0"
+  firebase_core: ^0.7.0
+  #getx
+  get: ^3.25.6  
+  get_storage: ^1.4.0
+  #network info
+  data_connection_checker: ^0.3.4
+
+  lazy_load_scrollview: 1.2.0
+  pull_to_refresh: 1.6.3
+
+  flutter_screenutil: ^3.2.0
+
+  cupertino_icons: ^1.0.0
+
+  keyboard_visibility: ^0.5.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  assets:
+    - assets/icons/
+
+  fonts:
+    - family: FiraSans
+      fonts:
+        - asset: assets/fonts/FiraSans-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/FiraSans-Light.ttf
+          weight: 300
+        - asset: assets/fonts/FiraSans-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/FiraSans-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/FiraSans-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/FiraSans-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/FiraSans-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/FiraSans-Black.ttf
+          weight: 900
+
+
+

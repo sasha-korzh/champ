@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "582651724722",
+    "project_id": "champdev",
+    "storage_bucket": "champdev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:582651724722:android:e8f441cdfcdbd0abfe1aab",
+        "android_client_info": {
+          "package_name": "com.champ.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "582651724722-famafqadf5b8ll9p1uad3h5cb32pho3p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.champ.dev",
+            "certificate_hash": "cd3e2a09ea4bcda8e2fa153792018b540a8bf23b"
+          }
+        },
+        {
+          "client_id": "582651724722-1ngjopdp0477sbbfhe04gngqe04srfqt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmXDj7Zy24eYQEq33cpnIOfSVnolWlPQE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "582651724722-1ngjopdp0477sbbfhe04gngqe04srfqt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

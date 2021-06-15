@@ -1,0 +1,168 @@
+type Post @model
+  @key(name: "postsByTopic", fields: ["topicId"], queryField: "postsByTopicId") 
+  @key(name: "createdPostsByUser", fields: ["authorId"]) 
+  {
+  id: ID!
+  topicId: ID
+  topic: Topic @connection(fields: ["topicId"])
+  authorId: ID
+  author: User @connection(fields: ["authorId"])
+  createdAt: AWSDateTime!
+  userSaved: [PostUser]! @connection(keyName: "usersByPost", fields: ["id"])
+  postElements: [PostElement]! @connection(keyName: "postElementsByPostId", fields: ["id"])
+  likes: [PostLike]! @connection(keyName: "likesByPost", fields: ["id"])
+  comments: [PostComment]! @connection(keyName: "commentsByPost", fields: ["id"])
+}
+
+type PostElement @model 
+  @key(name: "postElementsByPostId", fields: ["postId"])
+{
+  id: ID!
+  type: PostElementType!
+  postId: ID!
+  data: String! 
+}
+
+enum PostElementType { 
+  link
+  text
+  image
+  video
+}
+
+type PostComment @model 
+  @key(name: "commentsByPost", fields: ["postId"], queryField: "commentsByPostId")
+{
+  id: ID!
+  text: String!
+  postId: ID!
+  ownerId: ID!
+  owner: User! @connection(fields: ["ownerId"])
+  createdAt: AWSDateTime!
+}
+
+type PostLike @model
+  @key(name: "likesByPost", fields: ["postId"], queryField: "likesByPostId")
+{
+  id: ID!
+  postId: ID!
+  ownerId: ID!
+  owner: User! @connection(fields: ["ownerId"])
+  createdAt: AWSDateTime!
+}
+
+type Topic @model {
+  id: ID!
+  name: String!
+  description: String!
+  avatarImageUrl: String!
+  backgroundImageUrl: String!
+  followers: [TopicUser] @connection(keyName: "usersByTopic", fields: ["id"])
+  posts: [Post] @connection(keyName: "postsByTopic", fields: ["id"])
+}
+
+type TopicUser @model 
+  @key(name: "topicsByUser", fields: ["userId"], queryField: "topicsByUserId")
+  @key(name: "usersByTopic", fields: ["topicId"], queryField: "usersByTopicId")
+{
+  id: ID!
+  userId: ID!
+  topicId: ID!
+  user: User @connection(fields: ["userId"])
+  topic: Topic @connection(fields: ["topicId"])
+}
+
+type PostUser @model 
+  @key(name: "postsByUser", fields: ["userId"])
+  @key(name: "usersByPost", fields: ["postId"], queryField: "usersByPostId")
+{
+  id: ID!
+  userId: ID!
+  postId: ID!
+  user: User @connection(fields: ["userId"])
+  post: Topic @connection(fields: ["postId"])
+}
+
+type UserAccount @model 
+  @key(fields: ["userToken"]) {
+  userToken: Int!
+  user: User! @connection
+}
+
+type User @model {
+  id: ID!
+  fullname: String!
+  gender: Gender!
+  avatarImageUrl: String!
+  backgroundImageUrl: String!
+  savedPosts: [PostUser]! @connection(keyName: "postsByUser", fields: ["id"])
+  createdPosts: [Post]! @connection(keyName: "createdPostsByUser", fields: ["id"])
+  followers: [Following]! @connection(keyName: "followersByUserId", fields: ["id"])
+  following: [Following]! @connection(keyName: "followingByUserId", fields: ["id"])
+  topics: [TopicUser]! @connection(keyName: "topicsByUser", fields: ["id"])
+  rating: Float!
+  coachExtension: Coach @connection
+}
+
+enum Gender { 
+  man
+  woman
+  other
+}
+
+type Following @model
+  @key(name: "followingByUserId", fields: ["followerId"]) 
+  @key(name: "followersByUserId", fields: ["followingId"]) 
+  {
+  id: ID
+  followerId: ID!
+  followingId: ID!
+  follower: User @connection(fields: ["followerId"])
+  following: User @connection(fields: ["followingId"])
+  createdAt: String!
+}
+
+type Coach @model {
+  id: ID!
+  userId: ID!
+  user: User @connection(fields: ["userId"])
+  coachStatPerDay: [CoachStat]! @connection(name: "coachStat")
+  createdTraining: [Training]! @connection(name: "trainingByCoach")
+}
+
+type CoachStat @model {
+  id: ID!
+  coach: Coach @connection(name: "coachStat")
+  likesStat: Int!
+  viewStat: Int!
+  purchasingStat: Int!
+  incomeStat: Float! 
+  date: AWSDateTime!
+}
+
+type Training @model  {
+  id: ID!
+  title: String!
+  description: String!
+  price: Float!
+  imagesUrl: [String]!
+  videoUrl: String!
+  coach: Coach! @connection(name: "trainingByCoach")
+  likes: [TrainingLike]! @connection(name: "likesByTraining")
+  comments: [TrainingComment]! @connection(name: "commentsByTraining")
+}
+
+type TrainingComment @model {
+  id: ID!
+  text: String!
+  training: Training! @connection(name: "commentsByTraining")
+  owner: User! @connection
+  createdAt: AWSDateTime!
+}
+
+type TrainingLike @model {
+  id: ID!
+  training: Training! @connection(name: "likesByTraining")
+  owner: User! @connection
+  createdAt: AWSDateTime!
+}

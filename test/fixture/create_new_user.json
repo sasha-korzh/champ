@@ -1,0 +1,26 @@
+{
+    "data": {
+      "createUser": {
+        "id": "user01s",
+        "fullname": "sasha",
+        "gender": "other",
+        "avatarImageUrl": "url",
+        "backgroundImageUrl": "",
+        "rating": 0,
+        "topics": {
+          "items": []
+        },
+        "followers": {
+          "items": []
+        },
+        "following": {
+          "items": []
+        }
+      },
+      "createUserAccount": {
+        "user": {
+          "id": "user01s"
+        }
+      }
+    }
+  }
