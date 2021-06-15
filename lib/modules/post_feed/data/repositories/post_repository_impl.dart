@@ -1,7 +1,6 @@
 
 import 'dart:io';
 
-import 'package:amplify_api/amplify_api.dart';
 import 'package:champ/core/error/exception.dart';
 import 'package:champ/core/util/network_info.dart';
 import 'package:champ/core/util/storage/remote_storage.dart';
@@ -86,14 +85,6 @@ class PostRepositoryImpl extends PostRepository {
       try {
         final url = await _remoteStorage.uploadFile(file);
         return Right(url);
-      } on ApiException catch(e) {
-        return Left(
-          ServerFailure(
-            userMessage: 'We have some problems with our server.(',
-            devMessage: e.message,
-            recoverySuggestion: e.recoverySuggestion,
-          )
-        );
       } on RemoteStorageException catch(e) {
         return Left(
           ServerFailure(
@@ -117,14 +108,6 @@ class PostRepositoryImpl extends PostRepository {
       try {
         await _remoteDataSource.createPostLike(postId, userId, likesCount, likeId);
         return Right(0);
-      } on ApiException catch(e) {
-        return Left(
-          ServerFailure(
-            userMessage: 'We have some problems with our server.(',
-            devMessage: e.message,
-            recoverySuggestion: e.recoverySuggestion,
-          )
-        );
       } on Exception {
         return Left(
           ServerFailure(

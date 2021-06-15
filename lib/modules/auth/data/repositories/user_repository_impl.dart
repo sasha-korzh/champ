@@ -1,5 +1,4 @@
 
-import 'package:amplify_api/amplify_api.dart';
 import 'package:champ/core/util/network_info.dart';
 import 'package:champ/modules/auth/data/datasources/remote_user_data_source.dart';
 import 'package:champ/modules/auth/domain/entities/user.dart';
@@ -26,12 +25,10 @@ class UserRepositoryImpl extends UserRepository {
       try {
         final user = await _remoteDataSource.createNewUser(newUserParams);
         return Right(user);
-      } on ApiException catch(e) {
+      } on Exception catch(e) {
         return Left(
           ServerFailure(
             userMessage: 'We have some problems with our server.(',
-            devMessage: e.message,
-            recoverySuggestion: e.recoverySuggestion,
           )
         );
       }
@@ -50,12 +47,10 @@ class UserRepositoryImpl extends UserRepository {
       try {
         final user = await _remoteDataSource.getUserById(id);
         return Right(user);
-      } on ApiException catch (e) {
+      } on Exception catch (e) {
         return Left(
           ServerFailure(
             userMessage: 'We have some problems with our server.(',
-            devMessage: e.message,
-            recoverySuggestion: e.recoverySuggestion,
           )
         );
       }
@@ -74,12 +69,10 @@ class UserRepositoryImpl extends UserRepository {
       try {
         final user = await _remoteDataSource.getUserByToken(token);
         return Right(user);
-      } on ApiException catch (e) {
+      } on Exception catch (e) {
         return Left(
           ServerFailure(
             userMessage: 'We have some problems with our server.(',
-            devMessage: e.message,
-            recoverySuggestion: e.recoverySuggestion,
           )
         );
       }

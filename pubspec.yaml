@@ -20,8 +20,6 @@ dependencies:
   google_sign_in: ^4.5.9
   firebase_auth: ^0.20.0
   #cloud
-  amplify_flutter: ^0.1.0
-  amplify_api: '<1.0.0'
   firebase_storage: "^7.0.0"
   firebase_core: ^0.7.0
   #getx

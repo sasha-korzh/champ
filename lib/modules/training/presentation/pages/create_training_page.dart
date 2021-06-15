@@ -77,11 +77,6 @@ class _CreateTrainingPageState extends State<CreateTrainingPage> {
             title: 'Створення тренування',
             icon: Icons.check,
             onMorePressed: () async {
-              loadState.value = true;
-              final training = await trainingController.createTraining(
-                
-              );
-              Get.offAndToNamed(Routes.trainingPage, arguments: training);
             },
           ),
           resizeToAvoidBottomPadding: false,
